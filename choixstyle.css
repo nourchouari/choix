@@ -34,14 +34,14 @@ section a{
     text-decoration: none;
 }
 .box{
-    background-color: #1c263a;
+    background-color: #E2BFD5;
     border-radius: 25px;
     margin-bottom: 20px;
     padding: 20px;
     transition: 0.5s;
 }
 .box:hover{
-    background-color: #314263;
+    background-color: #E2BFD5;
     padding: 30px;
     transition: 0.4s;
 }
