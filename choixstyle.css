@@ -1,47 +1,155 @@
+/* ===============================
+   GLOBAL
+   =============================== */
+
+:root{
+    --main:#E2BFD5;
+    --white:#ffffff;
+    --shadow:0 8px 25px rgba(0,0,0,0.15);
+    --radius:18px;
+}
+
 body{
-   background-color: #E2BFD5;
-    margin: 0;
+    background-color:var(--main);
+    margin:0;
+    font-family:'Segoe UI','Inter',Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
+
+/* ===============================
+   TITRES
+   =============================== */
+
 h1{
-    color: white;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    text-align: center;
-    margin-top: 4%;
-    font-size:50px;
-    text-decoration: underline;
+    color:var(--white);
+    text-align:center;
+    margin-top:4%;
+
+    font-size:48px;
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    position:relative;
 }
+
+/* underline moderne */
+
+h1::after{
+    content:"";
+    width:120px;
+    height:3px;
+    background:white;
+
+    display:block;
+    margin:15px auto 0;
+    border-radius:5px;
+}
+
 #titre2{
-    color: white;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    text-align: center;
+    color:var(--white);
+    text-align:center;
+    font-weight:500;
+    margin-bottom:40px;
 }
+
+
+/* ===============================
+   CONTENEUR
+   =============================== */
+
 .conteneur{
-    display: flex;
-    position: absolute;
-    width: 100%;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+
+    display:flex;
+
+    width:100%;
+    max-width:1200px;
+
+    margin:auto;
+
+    justify-content:center;
+    gap:40px;
+
+    flex-wrap:wrap;
 }
-.box img{
-    position: relative;
-    width: 250px;
-}
-.box h2{
-    color: white;
-    text-align: center;
-}
-section a{
-    text-decoration: none;
-}
+
+
+/* ===============================
+   BOX
+   =============================== */
+
 .box{
-    background-color: #E2BFD5;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    padding: 20px;
-    transition: 0.5s;
+
+    background-color:var(--main);
+
+    border-radius:var(--radius);
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:0.35s ease;
+
+    backdrop-filter: blur(6px);
+
+    box-shadow:var(--shadow);
 }
+
+.box img{
+
+    width:220px;
+
+    transition:0.35s;
+}
+
+.box h2{
+
+    color:var(--white);
+    margin-top:15px;
+    font-weight:600;
+}
+
+/* hover moderne */
+
 .box:hover{
-    background-color: #E2BFD5;
-    padding: 30px;
-    transition: 0.4s;
+
+    transform:translateY(-8px) scale(1.03);
+
+    box-shadow:0 14px 35px rgba(0,0,0,0.25);
+}
+
+.box:hover img{
+
+    transform:scale(1.08);
+}
+
+
+/* ===============================
+   LIENS
+   =============================== */
+
+section a{
+
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width:768px){
+
+h1{
+    font-size:36px;
+}
+
+.box img{
+    width:180px;
+}
+
+.conteneur{
+    gap:25px;
+}
+
 }
