@@ -1,155 +1,337 @@
 /* ===============================
-   GLOBAL
+
+   GLOBAL & VARIABLES
+
    =============================== */
 
-:root{
-    --main:#E2BFD5;
-    --white:#ffffff;
-    --shadow:0 8px 25px rgba(0,0,0,0.15);
-    --radius:18px;
+:root {
+
+    --main-pink: #E2BFD5;
+
+    --dark-pink: #68495d;
+
+    --bg-color: #fafafa;
+
+    --text-main: #1e1e1e;
+
+    --text-muted: #666;
+
+    --card-bg: rgba(255, 255, 255, 0.7);
+
 }
 
-body{
-    background-color:var(--main);
-    margin:0;
-    font-family:'Segoe UI','Inter',Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+
+ 
+
+body {
+
+    margin: 0;
+
+    font-family: 'Inter', system-ui, sans-serif;
+
+    /* Un fond très doux qui mettra le rose en valeur */
+
+    background: radial-gradient(circle at top right, #fdf6fa, var(--bg-color));
+
+    color: var(--text-main);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 100vh;
+
 }
+
+
+ 
 
 /* ===============================
-   TITRES
+
+   TYPOGRAPHIE
+
    =============================== */
 
-h1{
-    color:var(--white);
-    text-align:center;
-    margin-top:4%;
+.hero-container {
 
-    font-size:48px;
-    font-weight:700;
+    text-align: center;
 
-    letter-spacing:1px;
+    width: 100%;
 
-    position:relative;
+    max-width: 1000px;
+
+    padding: 2rem;
+
 }
 
-/* underline moderne */
 
-h1::after{
-    content:"";
-    width:120px;
-    height:3px;
-    background:white;
+ 
 
-    display:block;
-    margin:15px auto 0;
-    border-radius:5px;
+h1 {
+
+    font-size: 3.5rem;
+
+    font-weight: 800;
+
+    margin: 0 0 0.5rem 0;
+
+    letter-spacing: -1px;
+
+    color: var(--dark-pink);
+
 }
 
-#titre2{
-    color:var(--white);
-    text-align:center;
-    font-weight:500;
-    margin-bottom:40px;
+
+ 
+
+.subtitle {
+
+    font-size: 1.2rem;
+
+    color: var(--text-muted);
+
+    margin-bottom: 4rem;
+
+    font-weight: 400;
+
 }
 
+
+ 
 
 /* ===============================
-   CONTENEUR
+
+   GRILLE ET CARTES
+
    =============================== */
 
-.conteneur{
+.conteneur-choix {
 
-    display:flex;
+    display: flex;
 
-    width:100%;
-    max-width:1200px;
+    justify-content: center;
 
-    margin:auto;
+    gap: 2rem;
 
-    justify-content:center;
-    gap:40px;
+    flex-wrap: wrap;
 
-    flex-wrap:wrap;
 }
 
 
+ 
+
+.choix-card {
+
+    text-decoration: none;
+
+    flex: 1;
+
+    min-width: 250px;
+
+    max-width: 300px;
+
+    /* Effet Glassmorphism */
+
+    background: var(--card-bg);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(226, 191, 213, 0.4); /* Bordure subtile rose */
+
+    border-radius: 24px;
+
+    padding: 3rem 2rem;
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+ 
+
+/* Petit effet de lueur rose en fond de carte */
+
+.choix-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: -50%;
+
+    left: -50%;
+
+    width: 200%;
+
+    height: 200%;
+
+    background: radial-gradient(circle, rgba(226,191,213,0.1) 0%, transparent 60%);
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+
+}
+
+
+ 
+
+.card-content {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.5rem;
+
+}
+
+
+ 
+
+.choix-card img {
+
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: contain;
+
+    transition: transform 0.4s ease;
+
+    filter: drop-shadow(0 8px 16px rgba(104, 73, 93, 0.15));
+
+}
+
+
+ 
+
+.choix-card h2 {
+
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-weight: 600;
+
+    font-size: 1.5rem;
+
+    transition: color 0.3s ease;
+
+}
+
+
+ 
+
 /* ===============================
-   BOX
+
+   INTERACTIVITÉ (HOVER)
+
    =============================== */
 
-.box{
+.choix-card:hover {
 
-    background-color:var(--main);
+    transform: translateY(-12px);
 
-    border-radius:var(--radius);
+    box-shadow: 0 20px 40px rgba(226, 191, 213, 0.3);
 
-    padding:25px;
+    border-color: var(--main-pink);
 
-    text-align:center;
-
-    transition:0.35s ease;
-
-    backdrop-filter: blur(6px);
-
-    box-shadow:var(--shadow);
 }
 
-.box img{
 
-    width:220px;
+ 
 
-    transition:0.35s;
+.choix-card:hover::before {
+
+    opacity: 1;
+
 }
 
-.box h2{
 
-    color:var(--white);
-    margin-top:15px;
-    font-weight:600;
+ 
+
+.choix-card:hover img {
+
+    transform: scale(1.15) rotate(5deg);
+
 }
 
-/* hover moderne */
 
-.box:hover{
+ 
 
-    transform:translateY(-8px) scale(1.03);
+.choix-card:hover h2 {
 
-    box-shadow:0 14px 35px rgba(0,0,0,0.25);
+    color: var(--dark-pink);
+
 }
 
-.box:hover img{
 
-    transform:scale(1.08);
-}
-
+ 
 
 /* ===============================
-   LIENS
-   =============================== */
 
-section a{
-
-    text-decoration:none;
-    color:inherit;
-}
-
-
-/* ===============================
    RESPONSIVE
+
    =============================== */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-h1{
-    font-size:36px;
+    h1 { font-size: 2.5rem; }
+
+    .conteneur-choix { flex-direction: column; align-items: center; }
+
+    .choix-card { width: 100%; }
+
 }
 
-.box img{
-    width:180px;
+
+ 
+
+/* ===============================
+
+   CLASSE JS
+
+   =============================== */
+
+
+ 
+
+/* Classes pour l'animation JS */
+
+.fade-in-hidden {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
 }
 
-.conteneur{
-    gap:25px;
-}
+
+ 
+
+.fade-in-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
 
 }
