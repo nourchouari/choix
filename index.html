@@ -1,80 +1,99 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="choixstyle.css">
-
-    <title>Nour CHOUARI - Accueil</title>
-
+    <title>Nour CHOUARI — Accueil</title>
 </head>
-
 <body>
-
-    <div class="hero-container">
-
-        <header class="hero-header">
-
-            <h1>Nour CHOUARI</h1>
-
-            <p class="subtitle">Où souhaitez-vous aller ?</p>
-
-        </header>
-
-
- 
-
-        <section class="conteneur-choix">
-
-            <a href="https://github.com/nourchouari" class="choix-card">
-
-                <div class="card-content">
-
-                    <img src="competence-github.png" alt="Logo GitHub">
-
-                    <h2>GitHub</h2>   
-
-                </div>
-
-            </a>
-
-            
-
-            <a href="https://www.linkedin.com/in/nour-chouari-23bab5332/" class="choix-card">
-
-                <div class="card-content">
-
-                    <img src="contact-linkedin.webp" alt="Logo LinkedIn">
-
-                    <h2>LinkedIn</h2>   
-
-                </div>
-
-            </a>
-
-            
-
-            <a href="https://nourchouari.github.io/portfolio/" class="choix-card">
-
-                <div class="card-content">
-
-                    <img src="monsite.png" alt="Logo Site Web">
-
-                    <h2>Portfolio</h2>
-
-                </div>
-
-            </a>
-
-        </section>
-
+    <div class="aurora">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
     </div>
 
-</body>
+    <main class="hero-container">
+        <header class="hero-header">
+            <p class="eyebrow">✦ Bienvenue</p>
+            <h1>Nour CHOUARI</h1>
+            <p class="subtitle">Apprentie ingénieure — Réseaux &amp; Sécurité</p>
+            <p class="tagline">Où souhaitez-vous aller&nbsp;?</p>
+        </header>
 
+        <section class="conteneur-choix">
+            <a href="https://nourchouari.github.io/portfolio/" class="choix-card" style="--i:0">
+                <div class="card-content">
+                    <span class="icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                            <path d="M3 9h18"></path>
+                            <path d="M8 21h8"></path>
+                            <path d="M12 18v3"></path>
+                        </svg>
+                    </span>
+                    <h2>Portfolio</h2>
+                    <p class="card-sub">Mes projets &amp; parcours</p>
+                    <span class="go">Visiter →</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/nourchouari" class="choix-card" style="--i:1">
+                <div class="card-content">
+                    <span class="icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 1.5A10.5 10.5 0 0 0 1.5 12c0 4.64 3.01 8.57 7.18 9.96.53.1.72-.23.72-.5v-1.75c-2.92.64-3.54-1.25-3.54-1.25-.48-1.22-1.17-1.54-1.17-1.54-.96-.65.07-.64.07-.64 1.06.08 1.62 1.09 1.62 1.09.94 1.62 2.47 1.15 3.07.88.1-.68.37-1.15.67-1.42-2.33-.27-4.78-1.17-4.78-5.19 0-1.15.41-2.08 1.09-2.82-.11-.27-.47-1.36.1-2.83 0 0 .89-.28 2.9 1.08a10 10 0 0 1 5.28 0c2.01-1.36 2.9-1.08 2.9-1.08.57 1.47.21 2.56.1 2.83.68.74 1.09 1.67 1.09 2.82 0 4.03-2.46 4.92-4.8 5.18.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.5A10.5 10.5 0 0 0 22.5 12 10.5 10.5 0 0 0 12 1.5z"></path>
+                        </svg>
+                    </span>
+                    <h2>GitHub</h2>
+                    <p class="card-sub">Mon code &amp; mes dépôts</p>
+                    <span class="go">Visiter →</span>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/nour-chouari-23bab5332/" class="choix-card" style="--i:2">
+                <div class="card-content">
+                    <span class="icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path>
+                        </svg>
+                    </span>
+                    <h2>LinkedIn</h2>
+                    <p class="card-sub">Mon réseau professionnel</p>
+                    <span class="go">Visiter →</span>
+                </div>
+            </a>
+        </section>
+
+        <footer class="hero-footer">
+            <p>© 2026 Nour CHOUARI</p>
+        </footer>
+    </main>
+
+    <script>
+        document.querySelectorAll('.choix-card').forEach(el => el.classList.add('fade-in-hidden'));
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.fade-in-hidden').forEach(el => el.classList.add('fade-in-visible'));
+            });
+        });
+
+        const cards = document.querySelectorAll('.choix-card');
+        if (window.matchMedia('(pointer:fine)').matches) {
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    card.style.setProperty('--rx', (y * -6).toFixed(2) + 'deg');
+                    card.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--rx', '0deg');
+                    card.style.setProperty('--ry', '0deg');
+                });
+            });
+        }
+    </script>
+</body>
 </html>
