@@ -1,337 +1,273 @@
 /* ===============================
-
-   GLOBAL & VARIABLES
-
+   VARIABLES
    =============================== */
-
 :root {
-
-    --main-pink: #E2BFD5;
-
-    --dark-pink: #68495d;
-
-    --bg-color: #fafafa;
-
-    --text-main: #1e1e1e;
-
-    --text-muted: #666;
-
-    --card-bg: rgba(255, 255, 255, 0.7);
-
+    --main-pink:  #E2BFD5;
+    --accent:     #C68FB6;
+    --accent-deep:#9A6A8C;
+    --dark-pink:  #5E4256;
+    --bg-color:   #FBF7FA;
+    --text-main:  #2A2430;
+    --text-muted: #6B6270;
+    --card-bg:    rgba(255, 255, 255, 0.55);
 }
 
+* { box-sizing: border-box; }
 
- 
+html, body { height: 100%; }
 
 body {
-
     margin: 0;
-
-    font-family: 'Inter', system-ui, sans-serif;
-
-    /* Un fond très doux qui mettra le rose en valeur */
-
-    background: radial-gradient(circle at top right, #fdf6fa, var(--bg-color));
-
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--bg-color);
     color: var(--text-main);
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     min-height: 100vh;
-
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
 }
-
-
- 
 
 /* ===============================
-
-   TYPOGRAPHIE
-
+   FOND ANIMÉ (aurora + orbes)
    =============================== */
-
-.hero-container {
-
-    text-align: center;
-
-    width: 100%;
-
-    max-width: 1000px;
-
-    padding: 2rem;
-
+.aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(60% 55% at 15% 20%, rgba(226,191,213,0.55), transparent 60%),
+        radial-gradient(55% 50% at 85% 15%, rgba(198,143,182,0.40), transparent 60%),
+        radial-gradient(60% 60% at 50% 100%, rgba(154,106,140,0.28), transparent 60%),
+        linear-gradient(120deg, #fdf6fb, var(--bg-color));
+    filter: saturate(1.05);
 }
 
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+}
+.orb-1 { width: 340px; height: 340px; top: -60px; left: -40px;  background: radial-gradient(circle, #E2BFD5, transparent 70%); animation: float1 16s ease-in-out infinite; }
+.orb-2 { width: 300px; height: 300px; bottom: -70px; right: -30px; background: radial-gradient(circle, #C68FB6, transparent 70%); animation: float2 20s ease-in-out infinite; }
+.orb-3 { width: 240px; height: 240px; top: 45%; left: 55%;        background: radial-gradient(circle, #d9a7cd, transparent 70%); animation: float3 18s ease-in-out infinite; }
 
- 
+@keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px, 50px); } }
+@keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-50px, -40px); } }
+@keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px, 30px) scale(1.1); } }
+
+/* ===============================
+   CONTENEUR
+   =============================== */
+.hero-container {
+    text-align: center;
+    width: 100%;
+    max-width: 1040px;
+    padding: 2.5rem 2rem;
+    animation: rise 0.8s cubic-bezier(0.16,0.84,0.44,1) both;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* ===============================
+   EN-TÊTE
+   =============================== */
+.hero-header { margin-bottom: 3.2rem; }
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    background: rgba(198,143,182,0.14);
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin: 0 0 1.1rem;
+}
 
 h1 {
-
-    font-size: 3.5rem;
-
+    font-size: clamp(2.6rem, 8vw, 4.2rem);
     font-weight: 800;
-
-    margin: 0 0 0.5rem 0;
-
-    letter-spacing: -1px;
-
-    color: var(--dark-pink);
-
+    margin: 0 0 0.6rem;
+    letter-spacing: -1.5px;
+    background: linear-gradient(120deg, var(--dark-pink), var(--accent-deep) 60%, var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-
- 
 
 .subtitle {
-
-    font-size: 1.2rem;
-
-    color: var(--text-muted);
-
-    margin-bottom: 4rem;
-
-    font-weight: 400;
-
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    color: var(--text-main);
+    margin: 0 0 1.6rem;
+    font-weight: 500;
 }
 
-
- 
+.tagline {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 400;
+}
 
 /* ===============================
-
-   GRILLE ET CARTES
-
+   GRILLE & CARTES
    =============================== */
-
 .conteneur-choix {
-
     display: flex;
-
     justify-content: center;
-
-    gap: 2rem;
-
+    gap: 1.8rem;
     flex-wrap: wrap;
-
+    perspective: 1000px;
 }
-
-
- 
 
 .choix-card {
-
     text-decoration: none;
-
-    flex: 1;
-
-    min-width: 250px;
-
+    flex: 1 1 250px;
     max-width: 300px;
-
-    /* Effet Glassmorphism */
-
     background: var(--card-bg);
-
-    backdrop-filter: blur(10px);
-
-    -webkit-backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(226, 191, 213, 0.4); /* Bordure subtile rose */
-
-    border-radius: 24px;
-
-    padding: 3rem 2rem;
-
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 26px;
+    padding: 2.6rem 1.8rem;
+    box-shadow: 0 12px 34px rgba(94, 66, 86, 0.08);
     position: relative;
-
     overflow: hidden;
-
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.25s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
 }
 
-
- 
-
-/* Petit effet de lueur rose en fond de carte */
-
+/* Lueur qui balaie la carte au survol */
 .choix-card::before {
-
     content: '';
-
     position: absolute;
-
-    top: -50%;
-
-    left: -50%;
-
-    width: 200%;
-
-    height: 200%;
-
-    background: radial-gradient(circle, rgba(226,191,213,0.1) 0%, transparent 60%);
-
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(226,191,213,0.22) 0%, transparent 55%);
     opacity: 0;
-
     transition: opacity 0.4s ease;
-
+    pointer-events: none;
 }
-
-
- 
+/* Barre de dégradé en haut de carte */
+.choix-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--main-pink), var(--accent), var(--accent-deep));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16,0.84,0.44,1);
+}
 
 .card-content {
-
     position: relative;
-
     z-index: 1;
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
-    gap: 1.5rem;
-
+    gap: 0.7rem;
 }
 
-
- 
-
-.choix-card img {
-
-    width: 80px;
-
-    height: 80px;
-
-    object-fit: contain;
-
-    transition: transform 0.4s ease;
-
-    filter: drop-shadow(0 8px 16px rgba(104, 73, 93, 0.15));
-
+.icon-wrap {
+    width: 76px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    color: var(--accent-deep);
+    background: linear-gradient(135deg, rgba(226,191,213,0.45), rgba(198,143,182,0.25));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 8px 18px rgba(154,106,140,0.15);
+    transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), color 0.3s ease;
 }
-
-
- 
+.icon-wrap svg { width: 38px; height: 38px; }
 
 .choix-card h2 {
-
     margin: 0;
-
     color: var(--text-main);
-
-    font-weight: 600;
-
-    font-size: 1.5rem;
-
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.3px;
     transition: color 0.3s ease;
-
 }
 
-
- 
-
-/* ===============================
-
-   INTERACTIVITÉ (HOVER)
-
-   =============================== */
-
-.choix-card:hover {
-
-    transform: translateY(-12px);
-
-    box-shadow: 0 20px 40px rgba(226, 191, 213, 0.3);
-
-    border-color: var(--main-pink);
-
+.card-sub {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
 }
 
-
- 
-
-.choix-card:hover::before {
-
-    opacity: 1;
-
-}
-
-
- 
-
-.choix-card:hover img {
-
-    transform: scale(1.15) rotate(5deg);
-
-}
-
-
- 
-
-.choix-card:hover h2 {
-
-    color: var(--dark-pink);
-
-}
-
-
- 
-
-/* ===============================
-
-   RESPONSIVE
-
-   =============================== */
-
-@media (max-width: 768px) {
-
-    h1 { font-size: 2.5rem; }
-
-    .conteneur-choix { flex-direction: column; align-items: center; }
-
-    .choix-card { width: 100%; }
-
-}
-
-
- 
-
-/* ===============================
-
-   CLASSE JS
-
-   =============================== */
-
-
- 
-
-/* Classes pour l'animation JS */
-
-.fade-in-hidden {
-
+.go {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-deep);
     opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-
+    transform: translateY(6px);
+    transition: opacity 0.35s ease, transform 0.35s ease, gap 0.3s ease;
 }
 
+/* HOVER */
+.choix-card:hover {
+    box-shadow: 0 26px 50px rgba(154, 106, 140, 0.28);
+    border-color: rgba(198,143,182,0.6);
+    background: rgba(255, 255, 255, 0.82);
+}
+.choix-card:hover::before { opacity: 1; }
+.choix-card:hover::after  { transform: scaleX(1); }
+.choix-card:hover .icon-wrap {
+    transform: translateY(-4px) scale(1.08) rotate(-4deg);
+    color: var(--dark-pink);
+}
+.choix-card:hover h2 { color: var(--dark-pink); }
+.choix-card:hover .go { opacity: 1; transform: translateY(0); }
 
- 
+/* ===============================
+   FOOTER
+   =============================== */
+.hero-footer {
+    margin-top: 3rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+.hero-footer p { margin: 0; }
 
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 768px) {
+    .conteneur-choix { flex-direction: column; align-items: center; }
+    .choix-card { width: 100%; max-width: 360px; }
+    .hero-header { margin-bottom: 2.4rem; }
+    .orb { filter: blur(45px); opacity: 0.4; }
+}
+
+/* ===============================
+   ANIMATION D'APPARITION (cascade)
+   =============================== */
+.fade-in-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+}
 .fade-in-visible {
-
     opacity: 1;
-
     transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16,0.84,0.44,1);
+    transition-delay: calc(var(--i, 0) * 0.12s + 0.2s);
+}
 
+@media (prefers-reduced-motion: reduce) {
+    *, .orb { animation: none !important; transition: none !important; }
+    .fade-in-hidden { opacity: 1; transform: none; }
+    .go { opacity: 1; transform: none; }
 }
